@@ -1,0 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: rgb(155, 155, 155);
+}
+header {
+  display: flex;
+  padding: 0 20px;
+  background-color: black;
+  color: white;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+}
+header + div {
+  color: white;
+  display: block;
+  height: 60px;
+  background-color: rgb(88, 88, 88);
+  text-align: center;
+  line-height: 50px;
+  margin-bottom: 50px;
+}
+header + div h2 {
+  display: inline-block;
+}
+.container {
+  width: 60%;
+  margin: auto;
+}
+.container .divForEachbookSection {
+  background-color: rgb(196, 194, 194);
+  border: 3px solid rgb(100, 100, 100);
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 37px;
+  overflow: hidden;
+  color: rgb(99, 98, 98);
+}
+.container .divForEachbookSection section {
+  overflow: hidden;
+  width: 50%;
+  height: fit-content;
+  margin: auto;
+}
+.container .divForEachbookSection section img {
+  border: 5px solid rgb(197, 195, 195);
+  width: 80%;
+}
+.container .divForEachbookSection section img:hover {
+  border: none;
+  box-shadow: rgba(156, 153, 155, 0.8) 5px 5px,
+    rgba(156, 153, 155, 0.6) 10px 10px, rgba(156, 153, 155, 0.4) 15px 15px,
+    rgba(156, 153, 155, 0.2) 20px 20px, rgba(156, 153, 155, 0.1) 25px 25px;
+}
+.container .divForEachbookSection h2 {
+  color: rgb(255, 254, 254);
+  text-shadow: gray 1px 2px;
+}
+/*----searching page---*/
+input[type='text'] {
+  width: 50%;
+  height: 50px;
+  text-align: center;
+  font-size: larger;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.form section,
+button {
+  width: 50%;
+  height: 50px;
+  text-align: center;
+  font-size: larger;
+  border-radius: 10px;
+  margin: auto;
+  background-color: rgb(202, 202, 202);
+  margin-bottom: 30px;
+  line-height: 50px;
+}
+.form input[type='text'] {
+  background-color: white;
+  width: 100%;
+}
+button {
+  background-color: black;
+  color: white;
+  width: 100%;
+}
+/*------------index page-----*/
+header .links {
+  position: relative;
+  margin-top: 20px;
+}
+header .links .icon {
+  width: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  /* position: absolute; */
+  /* transform: translate(-100%, 100%); */
+  /* background-color: red; */
+}
+header .links .icon span {
+  display: flex;
+  width: 50px;
+  height: 5px;
+  margin-bottom: 3px;
+  background-color: rgb(236, 236, 236);
+  justify-content: flex-end;
+}
+
+header .links .icon span:nth-child(2) {
+  width: 50%;
+}
+header .links .icon span:hover {
+  width: 50px;
+  cursor: pointer;
+}
+
+header .links ul {
+  list-style: none;
+  display: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 30px;
+  top: 50px;
+  background-color: rgb(20, 20, 20, 0.7);
+  width: 200px;
+  text-align: center;
+}
+header .links:hover ul {
+  display: block;
+}
+
+header .links ul::before {
+  content: '';
+  border-width: 20px;
+  border-style: solid;
+  border-color: transparent transparent rgba(243, 238, 238, 0.7) transparent;
+  position: absolute;
+  top: -40px;
+  right: 0;
+}
+header .links ul li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 20px;
+  transition: 0.3s;
+  letter-spacing: 5px;
+}
+header .links ul li a:hover {
+  padding-left: 30px;
+  color: rgb(38, 0, 255, 0.8);
+  letter-spacing: 10px;
+}
+/*----------------------*/
+.Empty {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+}
+.Empty img {
+  width: 20%;
+}
+.Empty h3 {
+  font-size: 50px;
+  color: rgb(49, 49, 49);
+  letter-spacing: 10px;
+  padding-left: 30px;
+}
+/*---------------------------------------------*/
+.error img {
+  align-self: center;
+  margin-bottom: 50px;
+  animation: move 5s 0.2s infinite alternate;
+}
+
+.error h3 {
+  letter-spacing: 0px;
+  word-spacing: 20px;
+}
+@keyframes move {
+  from {
+    transform: translateX(200px);
+  }
+  to {
+    transform: translateX(-200px);
+  }
+}
