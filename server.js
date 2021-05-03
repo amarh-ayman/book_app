@@ -47,7 +47,6 @@ function searchPage(req, res) {
       res.render('pages/error', { error: err });
     });
 }
-
 /*--------------End functions Handler----------------*/
 
 /*------------------render books for show page----------------*/
