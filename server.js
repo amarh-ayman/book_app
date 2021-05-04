@@ -11,8 +11,12 @@ server.use(express.static('./img'));
 
 server.use(express.urlencoded({ extended: true }));
 server.use(cors());
+
 const PORT = process.env.PORT || 3000;
-const client = new pg.Client(process.env.DATABASE_URL);
+const client = new pg.Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
+});
 
 server.get('/', (req, res) => {
   let SQL = `SELECT * FROM books`;
