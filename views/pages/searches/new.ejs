@@ -6,11 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Search</title>
-  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="../styles/layout.css">
 </head>
 
 <body>
-  <header>
+  <%- include('../layouts/header') %>
+
+    <!-- <header>
     <h1>Best Books!</h1>
     <div class="links">
       <span class="icon">
@@ -23,32 +25,32 @@
         <li><a href="/new">Search</a></li>
       </ul>
     </div>
-  </header>
+  </header> -->
 
-  <div>
-    <h2>Seach by Title or Author</h2>
-  </div>
-  <main class="container form">
-    <form action="searches" method="POST">
-      <section>
-        <input type="text" name="searching" placeholder="Enter a title or author">
-      </section>
+    <div>
+      <h2>Seach by Title or Author</h2>
+    </div>
+    <main class="container form">
+      <form action="/searches" method="POST">
+        <section>
+          <input type="text" name="searching" placeholder="Enter a title or author">
+        </section>
 
-      <section>
-        <label for="title">Title</label>
-        <input type="radio" name="check" id="title" value="title">
-      </section>
-      <section>
-        <label for="author">Author</label>
-        <input type="radio" name="check" id="author" value="author">
-      </section>
-      <section>
-        <button>Search the Google Books API</button>
-      </section>
+        <section>
+          <label for="title">Title</label>
+          <input type="radio" name="check" id="title" value="title">
+        </section>
+        <section>
+          <label for="author">Author</label>
+          <input type="radio" name="check" id="author" value="author">
+        </section>
+        <section>
+          <button>Search the Google Books API</button>
+        </section>
 
-    </form>
-  </main>
-  <footer></footer>
+      </form>
+    </main>
+    <footer></footer>
 </body>
 
 </html>
