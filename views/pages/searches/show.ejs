@@ -10,7 +10,9 @@
 </head>
 
 <body>
-  <header>
+  <%- include('../layouts/header') %>
+
+    <!-- <header>
     <h1>Best Books!</h1>
     <div class="links">
       <span class="icon">
@@ -23,14 +25,15 @@
         <li><a href="/new">Search</a></li>
       </ul>
     </div>
-  </header>
-  <div>
-    <h2>Search Results</h2>
-  </div>
-  <main class="container">
+  </header> -->
     <div>
-      <% booKDataArray.forEach(book=>{ %>
-        <div class="divForEachbookSection">
+      <h2>Search Results</h2>
+    </div>
+    <main class="container">
+      <div class="divForEachbookSection">
+
+        <% booKDataArray.forEach((book,index)=>{ %>
+
           <section>
             <img src="<%=book.img %>">
           </section>
@@ -43,13 +46,25 @@
           <p>
             <%=book.description %>
           </p>
-        </div>
-        <% }) %>
-    </div>
-  </main>
-  <footer>
+          <h3>
+            <%=book.isbn %>
+          </h3>
 
-  </footer>
+          <form action="/books" method="POST">
+            <input type="hidden" name="img" value=<%=book.img%>>
+            <input type="hidden" name="title" value=<%=book.title%>>
+            <input type="hidden" name="author" value=<%=book.author%>>
+            <input type="hidden" name="description" value=<%=book.description%></input>
+            <input type="hidden" name="isbn" value=<%=book.id%>>
+
+            <button type="submit">Add book</button>
+          </form>
+          <% }) %>
+      </div>
+    </main>
+    <footer>
+
+    </footer>
 
 </body>
 

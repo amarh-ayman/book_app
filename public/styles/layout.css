@@ -48,7 +48,7 @@ header + div h2 {
 }
 .container .divForEachbookSection section img {
   border: 5px solid rgb(197, 195, 195);
-  width: 80%;
+  width: 50%;
 }
 .container .divForEachbookSection section img:hover {
   border: none;
