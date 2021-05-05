@@ -15,7 +15,7 @@ server.use(cors());
 const PORT = process.env.PORT || 3000;
 const client = new pg.Client({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
+  // ssl: { rejectUnauthorized: false },
 });
 
 server.get('/', (req, res) => {
@@ -55,7 +55,7 @@ server.post('/books', (req, res) => {
   let SQL = `INSERT INTO books (img ,title, author ,description ,isbn) VALUES ($1,$2,$3,$4,$5) RETURNING *;`;
 
   let safeValues = [img, title, author, description, isbn];
-
+  console.log(`isbn  ${isbn}`);
   client
     .query(SQL, safeValues)
     .then(result => {
@@ -79,22 +79,24 @@ server.get('/books/:id', (req, res) => {
 
 /*------------------render books for show page----------------*/
 function BOOKS(item) {
-  this.img =
-    item.volumeInfo.imageLinks.smallThumbnail ||
-    item.volumeInfo.imageLinks.thumbnail ||
-    `https://i.imgur.com/J5LVHEL.jpg`;
+  this.img = '';
+  try {
+    this.img =
+      item.volumeInfo.imageLinks.smallThumbnail ||
+      item.volumeInfo.imageLinks.thumbnail;
+  } catch {
+    this.img = `https://i.imgur.com/J5LVHEL.jpg`;
+  }
 
   this.title = item.volumeInfo.title || 'not avaliable';
   this.author = item.volumeInfo.authors || 'not avaliable';
   this.description = item.volumeInfo.description || 'not avaliable';
-  this.isbn = `${item.volumeInfo.industryIdentifiers[0].type || 'ISBN'}  : ${
-    item.volumeInfo.industryIdentifiers[0].identifier || 'not avaliable'
-  }`;
-
-  // console.log(
-  //   item.volumeInfo.industryIdentifiers[0].identifier || 'not avaliable'
-  // );
-  // console.log(this.isbn);
+  this.isbn = '';
+  try {
+    this.isbn = `${item.volumeInfo.industryIdentifiers[0].type}  : ${item.volumeInfo.industryIdentifiers[0].identifier}`;
+  } catch {
+    this.isbn = 'ISBN  :  not avaliable';
+  }
 }
 
 /************the most dangerous command , so it must be in the bottom******************** */
