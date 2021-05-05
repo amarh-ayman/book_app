@@ -1,17 +1,45 @@
 <div class="divForEachbookSection">
-  <div>
+  <section>
     <img src="<%= bookViewDetailes.img %>" />
-    <h2>
-      <%= bookViewDetailes.title %>
-    </h2>
-    <h3>
-      <%= bookViewDetailes.author %>
-    </h3>
-    <p>
-      <%= bookViewDetailes.description %>
-    </p>
-    <p>
-      <%= bookViewDetailes.isbn %>
-    </p>
-  </div>
+  </section>
+  <h2>
+    <%= bookViewDetailes.title %>
+  </h2>
+  <h3>
+    <%= bookViewDetailes.author %>
+  </h3>
+  <p>
+    <%= bookViewDetailes.description %>
+  </p>
+  <p>
+    <%= bookViewDetailes.isbn %>
+  </p>
 </div>
+
+<div class="delete">
+  <form action="/books/<%=bookViewDetailes.id%>?_method=delete" method="POST">
+    <button>DELETE</button>
+  </form>
+</div>
+
+<section class="update">
+  <button class="updateBtn" onclick="myFunction()">Update</button>
+  <form style="display: none;" class="fromOfUpdate" action="/books/<%=bookViewDetailes.id%>?_method=put" method="POST">
+    <input type="text" name="title" value=" <%= bookViewDetailes.title  %> " />
+    <input type="text" name="author" value="<%= bookViewDetailes.author  %>" />
+    <input type="text" name="isbn" value="<%= bookViewDetailes.isbn  %>" />
+    <input type="text" name="image" value="<%= bookViewDetailes.img  %>" />
+    <textarea name="description" cols="30" rows="10">
+    <%= bookViewDetailes.description  %></textarea>
+
+    <!-- <input type="submit" value="Update Book" /> -->
+    <button>Update Book</button>
+  </form>
+</section>
+
+<script>
+  function myFunction() {
+    $('.fromOfUpdate').show();
+  }
+</script>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>

@@ -5,9 +5,12 @@ const server = express();
 const cors = require('cors');
 const superagent = require('superagent');
 const pg = require('pg');
+const methodOverride = require('method-override');
+
 server.set('view engine', 'ejs');
 server.use(express.static('./public'));
 server.use(express.static('./img'));
+server.use(methodOverride('_method'));
 
 server.use(express.urlencoded({ extended: true }));
 server.use(cors());
@@ -73,6 +76,22 @@ server.get('/books/:id', (req, res) => {
       res.render('./pages/books/show', { bookViewDetailes: result.rows[0] });
     })
     .catch(err => res.render('pages/error', { error: err }));
+});
+
+server.put('/books/:id', (req, res) => {
+  let { img, title, author, description, isbn } = req.body;
+  let SQL = `UPDATE books SET img=$1,title=$2,author=$3, description=$4,isbn=$5 WHERE id=$6;`;
+  let safeValues = [img, title, author, description, isbn, req.params.id];
+
+  client.query(SQL, safeValues).then(() => {
+    res.redirect(`/books/${req.params.id}`);
+  });
+});
+
+server.delete('/books/:id', (req, res) => {
+  let SQL = `DELETE FROM books WHERE id=$1;`;
+  let value = [req.params.id];
+  client.query(SQL, value).then(res.redirect('/'));
 });
 
 /*--------------End functions Handler----------------*/

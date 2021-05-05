@@ -29,18 +29,17 @@
           <h4>
             <%=book.author%>
           </h4>
-          <p>
+          <!-- <p>
             <%=book.description %>
-          </p>
+          </p> -->
           <h3>
             <%=book.isbn %>
           </h3>
-          <%console.log(book.isbn)%>
 
-            <form action="/books/<%=book.id%>">
-              <button type="submit">View Detailes</button>
-            </form>
-            <% }) %>
+          <form action="/books/<%=book.id%>">
+            <button type="submit">View Detailes</button>
+          </form>
+          <% }) %>
       </div>
 
     </main>
