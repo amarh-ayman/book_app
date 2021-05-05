@@ -60,6 +60,9 @@ header + div h2 {
   color: rgb(255, 254, 254);
   text-shadow: gray 1px 2px;
 }
+.container .divForEachbookSection * {
+  margin-bottom: 20px;
+}
 /*----searching page---*/
 input[type='text'] {
   width: 50%;
@@ -162,7 +165,7 @@ header .links ul li a:hover {
   letter-spacing: 10px;
 }
 /*----------------------*/
-.Empty {
+/* .Empty {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -177,7 +180,7 @@ header .links ul li a:hover {
   color: rgb(49, 49, 49);
   letter-spacing: 10px;
   padding-left: 30px;
-}
+} */
 /*---------------------------------------------*/
 .error img {
   align-self: center;
@@ -195,5 +198,26 @@ header .links ul li a:hover {
   }
   to {
     transform: translateX(-200px);
+  }
+}
+/*----------------detailes page for updating styles--------------------*/
+
+.update input,
+textarea {
+  margin-bottom: 30px;
+  width: 100%;
+  text-align: center;
+  font-size: larger;
+  border-radius: 10px;
+}
+/*-----------------------------*/
+@media (min-width: 618px) and (max-width: 1044px) {
+  button {
+    font-size: small;
+  }
+}
+@media (max-width: 618px) {
+  button {
+    font-size: 10px;
   }
 }
